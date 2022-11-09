@@ -41,7 +41,7 @@
 >  *  Testing a string above 12000 words but below 24000, that is not a multiple of 200 : Test for a string that displays hours and minutes and seconds 
 
 > _Test Case Eight_ 
->  *  Testing a string above 12000 words but below 24000, that is not a multiple of 200 : Test for a string that displays hours and minutes and seconds 
+>  *  Testing a string that is between 12000 and 12199 words: Test for a string that displays hours and seconds but not minutes
 
 > These are examples of the method being called with particular arguments, and
 > what the method should return in each situation.
