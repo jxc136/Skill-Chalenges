@@ -69,4 +69,19 @@ RSpec.describe "read_speed" do
     expect(result).to eq "0 hours, 1 minutes, 30 seconds"
   end 
 
+  it "a 12000 word string takes 1 hour" do 
+    result = read_speed("one " * 12000 )
+    expect(result).to eq "1 hours, 0 minutes, 0 seconds"
+  end 
+
+  it "test for a string that displays non-zero hours and minutes and seconds " do 
+    result = read_speed("one " * 12300 )
+    expect(result).to eq "1 hours, 1 minutes, 30 seconds"
+  end 
+
+  it "test for a string that displays no-zero hours and seconds, but zero minutes " do 
+    result = read_speed("one " * 12100 )
+    expect(result).to eq "1 hours, 0 minutes, 30 seconds"
+  end 
+
 end 

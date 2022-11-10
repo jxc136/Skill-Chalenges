@@ -31,13 +31,11 @@
 > _Test Case Four_ 
 >  * Testing a string above 200 words but below 400: Ensuring a 300 word string takes 1 minute 30 seconds to read
 
-### For the purposes of avoiding unweildy code in this practice, tests for hours have been excluded, but they would be:
-
 > _Test Case Five_ 
 >  *  Testing a string with exactly 12000 words: Ensuring it takes exactly an hour to read
 
 > _Test Case Six_ 
->  *  Testing a string above 12000 words but below 24000, that is not a multiple of 200 : Test for a string that displays hours and minutes and seconds 
+>  *  Testing a string above 12200 words but below 24000, that is not a multiple of 200 : Test for a string that displays hours and minutes and seconds 
 
 > _Test Case Seven_ 
 >  *  Testing a string that is between 12000 and 12199 words: Test for a string that displays hours and seconds but not minutes
