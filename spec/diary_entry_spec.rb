@@ -70,7 +70,7 @@ RSpec.describe DiaryEntry do
   end
 
 
-  it "reading chunk is called three times, the first two times it is called- it will return the first two chunks, the third time it is called- it will return the first chunk again" do
+  it "reading chunk is called three times, the first two times it is called- it will return the first two chunks, the third time it is called- it will return the remainder of unread text and no more" do
     entry = DiaryEntry.new("Today",("Bike " * 30) + ("Car " * 30))
     expect(entry.reading_chunk(60,0.2)).to eq ("Bike " * 11) + "Bike"
     expect(entry.reading_chunk(60,0.5)).to eq ("Bike " * 18) + ("Car " * 11) + "Car"
