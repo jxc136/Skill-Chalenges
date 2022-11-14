@@ -8,6 +8,7 @@ I want a program that I can add todo tasks to and see a list of them. -->
 > 
 > User wants to keep track of their tasks 
 > Programme needs to add tasks and see a list of all tasks 
+> Programme must mark tasks as complete and have them disappear from the list.
 > 
 > ## 2. Design the Class Interface
 > 
@@ -22,6 +23,11 @@ Class To_Do_List
   def add (text) #text is a string
     # no return value 
     # pushes any todo actions into the task list 
+  end
+
+  def remove (entry) #text is a string contained within the task list array
+    # no return value 
+    # deletes the specified string from the to_do list array 
   end
 
   def display 
@@ -47,7 +53,7 @@ to_do_list = To_Do_List.new
 to_do_list.add("wash dishes") 
 to_do_list.display #  => [wash dishes]
 
-# Three - raises error if user tries to add an empty string to list. y:
+# Three - raises error if user tries to add an empty string to list. :
 
 to_do_list = To_Do_List.new 
 to_do_list.add("") 
@@ -59,17 +65,35 @@ to_do_list.add("walk the dog")
 to_do_list.add("tidy bedroom") 
 to_do_list.display #  => ["walk the dog", "tidy the bedroom"]
 
-# Five - accepts multiple entries, seperate by a comma, and adds them as seperate entries:
-to_do_list = To_Do_List.new 
-to_do_list.add("wash dishes") 
-to_do_list.add("walk the dog, tidy bedroom") 
-to_do_list.display #  => ["wash dishes, walk the dog", "tidy the bedroom"]
 
-# Six - no duplicate entries 
+# Five - no duplicate entries 
 to_do_list = To_Do_List.new 
 to_do_list.add("wash dishes") 
 to_do_list.add("wash dishes") 
 to_do_list.display #  => ["wash dishes"]
+
+# Six - deletes the only entry from an array, returns empty array
+to_do_list = To_Do_List.new 
+to_do_list.add("wash dishes") 
+to_do_list.remove("wash dishes")
+to_do_list.display #  => []
+
+# Seven - deletes specified entry from array containing multiple strings, displays remaining list 
+to_do_list = To_Do_List.new 
+to_do_list.add("wash dishes") 
+to_do_list.add("clean car") 
+to_do_list.add("walk dog") 
+to_do_list.remove("wash dishes")
+to_do_list.display #  => ["clean car", "walk dog"]
+
+# Eight - removes an entry from list, then adds it again. entry will be displayed at the end of the list 
+to_do_list = To_Do_List.new 
+to_do_list.add("wash dishes") 
+to_do_list.add("clean car") 
+to_do_list.add("walk dog") 
+to_do_list.remove("wash dishes")
+to_do_list.add("wash dishes")
+to_do_list.display #  => ["clean car", "walk dog", "wash dishes"]
 
 ```
 > These are examples of the class being used with different initializer
