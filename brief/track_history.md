@@ -77,10 +77,12 @@ song_tracker.display # => ["spacey"]
 # 4 - Will not add duplicate entries 
 song_tracker = Song_Tracker.new
 song_tracker.add("once")
+song_tracker.add("Death of a Bachelor")
+song_tracker.add("Hotel California")
 song_tracker.add("once")
 song_tracker.display # => ["once]
 
-# 5 -  Add method used multiple times, array displays that manyentries 
+# 5 -  Add method used multiple times, array displays that many entries 
 
 song_tracker = Song_Tracker.new 
 song_tracker.add("The End of the World")
