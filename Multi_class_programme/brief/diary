@@ -1,0 +1,109 @@
+Diary
+
+- add: adds a diary entry (instance of diary entry class)
+- all: returns a list of all diary entry instances within an array
+- count words: count's the number of words in all diary entries 
+- Reading time: Given an input of the users WPM, returns an esitmate of how long it would take to read all diary entries 
+- find_best_entry_for_reading_time: given an input of wpm and the minutes of availble, 
+  returns an instance of a diary entry closest to, but not over the time availble 
+- Initialize: needs an array
+
+
+Diary Entry 
+
+Initialize - Takes title and contents as arguements 
+title - returns title as string 
+contents - returns contents 
+count words - returns a number of words of the contents as an integrer
+reading time - accepts an argument of WPM, returns an estimaate of the reading time 
+Reading chunk - given a wpm and minutes availble, returns a string with the chunk of
+                contents the user could read in that time. If called again, should return 
+                the next chunk, skipping over what is already read, until contents is fully
+                read. The next call after that should restart
+
+
+Tests 
+
+Unit tests
+
+Integration tests
+
+```Ruby
+
+# 1 - given no diary entries, returns empty list 
+
+  diary = Diary.new 
+  diary.all # => []
+
+# 2 - given no diary entries, returns word count of 0 
+
+  diary = Diary.new 
+  diary.count_words # => 0
+
+# 3 - given no diary entries, expect reading_time to equal 0 
+
+  diary = Diary.new 
+  diary.total_words # => 0
+
+# 4 - given no diary entries, expect reading_time to raise errror
+
+  diary = Diary.new 
+  diary.find_best_entry_for_reading_time # error: no diary entries present 
+
+# 5 - Given multiple diary entries, returns total word count
+
+  diary = Diary.new 
+  diary_entry = Diary_Entry.new("my_title1","my_contents1")
+  diary.add(diary_entry)
+  diary_entry = Diary_Entry.new("my_title2","my_contents2")
+  diary.add(diary_entry)
+  diary_entry = Diary_Entry.new("my_title2","my_contents2")
+  diary.add(diary_entry)
+  diary.total_words # => 6 
+
+# 6 - Given multiple diary entries, and a reading time, returns total reading time
+
+  diary = Diary.new 
+  diary_entry = Diary_Entry.new("my_title1","my_contents1 " * 60)
+  diary.add(diary_entry)
+  diary_entry = Diary_Entry.new("my_title2","my_contents2 " * 60)
+  diary.add(diary_entry)
+  diary_entry = Diary_Entry.new("my_title2","my_contents2 " * 60)
+  diary.add(diary_entry)
+  diary.reading_time(60) # => 3
+
+# 6 - Given multiple diary entries, and a reading time that is not exactly a minute, appropiately rounds
+
+  diary = Diary.new 
+  diary_entry = Diary_Entry.new("my_title1","my_contents1 " * 60)
+  diary.add(diary_entry)
+  diary_entry = Diary_Entry.new("my_title2","my_contents2 " * 120)
+  diary.add(diary_entry)
+  diary_entry = Diary_Entry.new("my_title2","my_contents2 " * 40)
+  diary.add(diary_entry)
+  diary.reading_time(60) # => 4
+
+# 7 - Given a single diary entry within reading time, returns diary entry 
+
+diary = Diary.new 
+diary_entry = Diary_Entry.new("my_title1","my_contents1 " * 15)
+diary.add(diary_entry)
+diary.find_best_entry_for_reading_time(60,1) # => "my_contents1 " * 15
+
+# 8 - Given a single diary entry outside of reading time, raises error
+
+diary = Diary.new 
+diary_entry = Diary_Entry.new("my_title1","my_contents1 " * 100)
+diary.add(diary_entry)
+diary.find_best_entry_for_reading_time(60,1) # => raise error "no entries within given time" 
+
+# 9 Given two diary entries, with one closer to, but over the given time. No error message, returns the second string 
+
+diary = Diary.new 
+diary_entry = Diary_Entry.new("my_title1","my_contents1 " * 100)
+diary.add(diary_entry)
+diary_entry = Diary_Entry.new("my_title2","my_contents2 " * 20)
+diary.add(diary_entry)
+diary.find_best_entry_for_reading_time(60,1) # => "my_contents2 " * 20"
+
+```

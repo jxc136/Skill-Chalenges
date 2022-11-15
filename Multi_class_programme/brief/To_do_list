@@ -1,0 +1,19 @@
+ToDoList 
+
+Needs: 
+
+Array for Complete
+Array for incomplete
+Way to push incompletes into compete
+To-do class
+
+- Add - interacts with to-do - pushes a task into complete array
+- incomplete returns all incomplete to-dos 
+- complete - returns all complete to-dos 
+- give up - marks all todos as complete 
+
+ToDo:
+
+task - returns task as a string
+Mark done - complete variable
+Done? - returns true if done 
